@@ -309,4 +309,7 @@
     <string name="config_batCurCap">/sys/class/power_supply/bms/charge_now_raw</string>
     <string name="config_batChargeCycle">/sys/class/power_supply/bms/cycle_count</string>
 
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_enableSmartPixels">false</bool>
+
 </resources>
