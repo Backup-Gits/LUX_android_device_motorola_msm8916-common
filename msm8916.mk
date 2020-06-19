@@ -324,6 +324,19 @@ PRODUCT_COPY_FILES += \
     kernel/motorola/msm8916/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
     kernel/motorola/msm8916/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
+# SemcMusic
+PRODUCT_PACKAGES += \
+    SemcMusic
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/SonyMusic/proprietary/etc/permissions/com.sony.device.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.sony.device.xml \
+    $(LOCAL_PATH)/SonyMusic/proprietary/etc/permissions/com.sonymobile.mediacontent.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.sonymobile.mediacontent.xml \
+    $(LOCAL_PATH)/SonyMusic/proprietary/etc/permissions/com.sonyericsson.system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.sonyericsson.system.xml \
+    $(LOCAL_PATH)/SonyMusic/proprietary/framework/com.sony.device.jar:$(TARGET_COPY_OUT_SYSTEM)/framework/com.sony.device.jar \
+    $(LOCAL_PATH)/SonyMusic/proprietary/framework/com.sonyericsson.system.jar:$(TARGET_COPY_OUT_SYSTEM)/framework/com.sonyericsson.system.jar \
+    $(LOCAL_PATH)/SonyMusic/proprietary/framework/com.sonyericsson.music.jar:$(TARGET_COPY_OUT_SYSTEM)/framework/com.sonyericsson.music.jar \
+    $(LOCAL_PATH)/SonyMusic/proprietary/framework/com.sonymobile.mediacontent.jar:$(TARGET_COPY_OUT_SYSTEM)/framework/com.sonymobile.mediacontent.jar
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
