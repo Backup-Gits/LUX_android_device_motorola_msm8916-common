@@ -15,7 +15,10 @@
 # limitations under the License.
 #
 
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product-if-exists, vendor/motorola/msm8916-common/msm8916-common-vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -23,8 +26,11 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
+
+#    $(LOCAL_PATH)/overlay-lineage
+
+PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -209,8 +215,8 @@ PRODUCT_COPY_FILES += \
 
 # Keystore
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@4.0-impl \
+    android.hardware.keymaster@4.0-service \
     keystore.msm8916
 
 # Lights
@@ -218,8 +224,8 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.msm8916
 
 # LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
+#PRODUCT_PACKAGES += \
+#    LineageActions
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -287,9 +293,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+# Trust Lineage
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
@@ -297,7 +303,10 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.lineage
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
+    
+#    android.hardware.vibrator@1.0-service.lineage
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -323,6 +332,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     kernel/motorola/msm8916/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
     kernel/motorola/msm8916/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # SemcMusic
 PRODUCT_PACKAGES += \
@@ -350,7 +364,3 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 # Always preopt extracted APKs to prevent extracting out of the APK
 # for gms modules.
 PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
-
-$(call inherit-product-if-exists, vendor/motorola/msm8916-common/msm8916-common-vendor.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
