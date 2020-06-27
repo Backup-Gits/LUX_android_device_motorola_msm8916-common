@@ -2,3 +2,8 @@ allow init firmware_file:dir mounton;
 allow init fsg_file:dir mounton;
 allow init pstorefs:dir mounton;
 allow init sysfs_graphics:file { setattr w_file_perms };
+allow init proc:file { read };
+allow init proc:file { open };
+allow init proc:file { getattr };
+allow init vendor_file:dir { create };
+allow init kernel:security { setcheckreqprot };

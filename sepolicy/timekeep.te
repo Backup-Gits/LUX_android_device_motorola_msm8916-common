@@ -19,3 +19,4 @@ allow timekeep sysfs_msm_subsys:dir search;
 
 r_dir_file(timekeep, sysfs_timekeep)
 
+allow timekeep_app sysfs:file { read };
