@@ -34,6 +34,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-mokee/mokee-sdk \
     $(LOCAL_PATH)/overlay/packages/apps/Snap
 
 # These are the hardware-specific features
