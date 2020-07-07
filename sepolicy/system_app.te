@@ -10,3 +10,4 @@ r_dir_file(system_app, sysfs_timekeep)
 r_dir_file(system_app, sysfs_rtc)
 
 allow system_app wificond:binder { call };
+allow system_app privapp_data_file:dir { search };
